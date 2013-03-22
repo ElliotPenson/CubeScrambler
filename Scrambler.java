@@ -3,8 +3,6 @@
  * 
  * Rubik's Cube scramble generator
  * 
- * TODO RL is a valid scramble, and this scrambler doesn't allow that.
- * 
  * @author Elliot Penson
  */
 
