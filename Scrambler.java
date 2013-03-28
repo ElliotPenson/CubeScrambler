@@ -49,8 +49,9 @@ public class Scrambler {
     }
 
     /**
-     * Finds a random face that is not on the same axis as the previous turn.
-     * @param lastFace
+     * Finds a random face that's not the same as the last or on the same axis as the last three
+     * @param penultimate 
+     * @param last
      * @return
      */
     public static String randomFace(String penultimate, String last) {
