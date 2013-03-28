@@ -38,8 +38,12 @@ public class Scrambler {
         String penultimateFace = "  ";
         String lastFace = "  ";
 
-        for(int i = 0; i < 25; i++)
-            scramble += (lastFace = randomFace(penultimateFace, lastFace)).charAt(0) + randomDirection() + " ";
+        for(int i = 0; i < 25; i++) {
+            String newFace = randomFace(penultimateFace, lastFace);
+            scramble += newFace.charAt(0) + randomDirection() + " ";
+            penultimateFace = lastFace;
+            lastFace = newFace;
+        }
 
         return scramble;
     }
@@ -61,7 +65,7 @@ public class Scrambler {
      * @return true if all the Strings have the same axis
      */
     public static boolean sameAxis(String a, String b, String c) {
-        return a.charAt(1) == b.charAt(1) || b.charAt(1) == c.charAt(1);
+        return a.charAt(1) == b.charAt(1) && b.charAt(1) == c.charAt(1);
     }
 
     /**
