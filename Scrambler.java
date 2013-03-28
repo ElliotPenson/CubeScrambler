@@ -19,7 +19,7 @@ public class Scrambler {
     private static final String[] rotation = { "", "'", "2" };
     
     /**
-     * Main method
+     * Main method for testing purposes
      * @param args
      */
     public static void main(String[] args) {
@@ -34,10 +34,12 @@ public class Scrambler {
      */
     public static String generateScramble() {
         String scramble = "";
+        
+        String penultimateFace = "  ";
         String lastFace = "  ";
 
         for(int i = 0; i < 25; i++)
-            scramble += (lastFace = randomFace(lastFace)).charAt(0) + randomDirection() + " ";
+            scramble += (lastFace = randomFace(penultimateFace, lastFace)).charAt(0) + randomDirection() + " ";
 
         return scramble;
     }
@@ -47,11 +49,19 @@ public class Scrambler {
      * @param lastFace
      * @return
      */
-    public static String randomFace(String lastFace) {
+    public static String randomFace(String penultimate, String last) {
         String toReturn = faces[(int)(Math.random() * faces.length)];
-        if(toReturn.charAt(1) == lastFace.charAt(1))
-            return randomFace(lastFace);
+        if(last.equals(toReturn) || sameAxis(penultimate, last, toReturn))
+            return randomFace(penultimate, last);
         return toReturn;
+    }
+    
+    /**
+     * Compares three face's axes
+     * @return true if all the Strings have the same axis
+     */
+    public static boolean sameAxis(String a, String b, String c) {
+        return a.charAt(1) == b.charAt(1) || b.charAt(1) == c.charAt(1);
     }
 
     /**
