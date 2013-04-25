@@ -8,7 +8,14 @@
 
 package scrambler;
 
+import java.util.Random;
+
 public class Scrambler {
+
+    /**
+     * Random number generator
+     */
+    private static Random random = new Random();
 
     /**
      * The faces of a Rubik's Cube represented as side/axis
@@ -61,7 +68,7 @@ public class Scrambler {
      * @return
      */
     public static Face randomFace(Face penultimate, Face last) {
-        Face toReturn = faces[(int)(Math.random() * faces.length)];
+        Face toReturn = faces[random.nextInt(faces.length)];
         if(last.sameFace(toReturn) || sameAxis(penultimate, last, toReturn))
             return randomFace(penultimate, last);
         return toReturn;
@@ -80,6 +87,6 @@ public class Scrambler {
      * @return
      */
     public static String randomDirection() {
-        return rotation[(int)(Math.random() * 3)];
+        return rotation[random.nextInt(rotation.length)];
     }
 }
