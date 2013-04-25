@@ -15,7 +15,7 @@ public class Scrambler {
     /**
      * Random number generator
      */
-    private static Random random = new Random();
+    private static Random random = new Random(System.currentTimeMillis());
 
     /**
      * The faces of a Rubik's Cube represented as side/axis
