@@ -35,6 +35,10 @@ public class Side {
 				stickers[x][y] = c;
 	}
 	
+	/**
+	 * Performs a clockwise rotation of edge and corner colors that are
+	 * on this side.
+	 */
 	public void rotateStickers() {
 		// rotate edges
 		Color edgeBuffer = stickers[1][0];
@@ -51,6 +55,11 @@ public class Side {
 		stickers[0][2] = cornerBuffer;
 	}
 
+	/**
+	 * Provides the row corresponding to the given index
+	 * @param y
+	 * @return
+	 */
 	public Color[] getRow(int y) {
 		Color[] toReturn = new Color[3];
 		for(int x = 0; x < 3; x++) {
@@ -59,11 +68,21 @@ public class Side {
 		return toReturn;
 	}
 	
-	public void setRow(Color[] row, int y) {
+	/**
+	 * Changes the stickers of a row to the colors in the given array
+	 * @param y
+	 * @param row
+	 */
+	public void setRow(int y, Color[] row) {
 		for(int x = 0; x < row.length; x++)
 			stickers[x][y] = row[x];
 	}
 
+	/**
+	 * Provides the column corresponding to the given index
+	 * @param x
+	 * @return
+	 */
 	public Color[] getColumn(int x) {
 		Color[] toReturn = new Color[3];
 		for(int y = 0; y < 3; y++) {
@@ -72,7 +91,12 @@ public class Side {
 		return toReturn;
 	}
 	
-	public void setColumn(Color[] column, int x) {
+	/**
+	 * Changes the stickers of a column to the colors in the given array
+	 * @param x
+	 * @param column
+	 */
+	public void setColumn(int x, Color[] column) {
 		for(int y = 0; y < column.length; y++)
 			stickers[x][y] = column[y];
 	}
